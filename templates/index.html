@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="static/style2.css">
+  
+</head>
+
+<body>
+  <div class="login">
+    <h1>Predict Confined Concrete Strength/Strain </h1>
+  </div>
+  
+ <div class="login-container">
+   <div class="form">
+   
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="/predict"method="post">
+      {% csrf_token %}
+      <div class="input-group">
+        <select name="mod" id="mod">
+          <div class="select-wrapper">
+        <option value ="0">Choose a model</option>
+        <option value="1">Linear and Xgboost Reg</option>
+        <option value="2">Linear and RandomForest Reg</option>
+        <option value="3">Linear and GradientBoosting Reg</option>
+        <option value="4">Bagging and GradientBoosting Reg</option>
+        <option value="5">Bagging and ExtraTree Reg</option>
+        <option value="6">Linear and Bagging Reg</option>
+          </div>
+        </select>
+      </div>
+      <div class="input-group">
+        <select name="out" id="out">
+          <div class="select-wrapper">
+        <option value ="0">What do you want to predict?</option>
+        <option value="1">Strength</option>
+        <option value="2">Strain</option>
+          </div>
+        </select>
+      </div>
+      <div class="input-group">
+    	<input type="text" name="fc" placeholder="Concrete Strength of Standard Cylinder(mm)" required="required" />
+      </div>
+      <div class="input-group">
+        <input type="text" name="tf" placeholder="Total Thickness of FRP Layers(mm)" required="required" />
+      </div>
+        <div class="input-group">
+		<input type="text" name="ef" placeholder="Elastic Modulus of FRP Wraps(MPa)" required="required" />
+  </div>
+    <div class="input-group">
+    	<input type="text" name="ar" placeholder="Aspect Ratio(mm/mm)" required="required" />
+    </div>
+      <div class="input-group">
+        <input type="text" name="ht" placeholder="Height of Column(mm)" required="required" />
+      </div>
+        <div class="input-group">
+		<input type="text" name="area" placeholder="Total Area of Cross Section(mm2)" required="required" />
+  </div>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   
+ </div>
+</div>
+<footer>
+    <p>This GUI is developed by Ayush Rathore, a graduate student of Dr Mahesh Patel, Department of Civil Engineering, Dr BR Ambedkar National institute of Technology, Jalandhar, India</p>
+		</footer>
+</body>
+
+</html>
